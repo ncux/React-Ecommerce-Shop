@@ -4,8 +4,6 @@ import { ProductsState } from "./context/products";
 
 function App() {
 
-
-
   return (
     <>
        <ProductsState>
