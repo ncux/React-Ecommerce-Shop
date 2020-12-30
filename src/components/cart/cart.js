@@ -9,14 +9,14 @@ export const Cart = () => {
 
     const styles = useStyles();
 
-    const { cart } = useContext(ProductsContext);
+    const { cart, emptyCart } = useContext(ProductsContext);
 
     const [empty, setEmpty] = useState(cart?.line_items?.length > 0);
 
-    const emptyCart = (
+    const voidCart = (
         <Typography variant="subtitle1">
             There are no items in your cart. <br />
-            <Link to="products">
+            <Link to="/products">
                 <small className={`${styles.link} hover:underline`}>Add items to cart</small>
             </Link>
         </Typography>
@@ -38,10 +38,10 @@ export const Cart = () => {
                             <div className={styles.cardDetails}>
                                 <Typography variant="h4">Subtotal: { cart?.subtotal?.formatted_with_symbol }</Typography>
                                 <div>
-                                    <Button className={styles.emptyButton} color="secondary" variant="contained" type="button" size="large">
+                                    <Button onClick={ emptyCart } className={styles.emptyButton} color="secondary" variant="contained" type="button" size="large">
                                         Empty Cart
                                     </Button>
-                                    <Button className={styles.checkoutButton} color="primary" variant="contained" type="button" size="large">
+                                    <Button component={ Link } to="/checkout" className={styles.checkoutButton} color="primary" variant="contained" type="button" size="large">
                                         Checkout
                                     </Button>
                                 </div>
@@ -61,7 +61,7 @@ export const Cart = () => {
         <Container>
             <div className={styles.toolbar} />
             <Typography variant="h3" className={styles.title}>Your shopping cart</Typography>
-            { empty ? emptyCart : fullCart }
+            { empty ? voidCart : fullCart }
         </Container>
     );
 

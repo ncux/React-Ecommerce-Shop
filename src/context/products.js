@@ -19,9 +19,23 @@ export const ProductsState = ({ children }) => {
     };
 
     const addToCart = async (productId, quantity) => {
-        const item = await commerce?.cart?.add(productId, quantity);
-        console.log(item);
-        setCart(item['cart']);
+        const data = await commerce?.cart?.add(productId, quantity);
+        setCart(data['cart']);
+    };
+
+    const updateCartQuantity = async (productId, quantity) => {
+        const data = await commerce?.cart?.update(productId, { quantity });
+        setCart(data['cart']);
+    };
+
+    const removeFromCart = async (productId) => {
+        const data = await commerce?.cart?.remove(productId);
+        setCart(data['cart']);
+    };
+
+    const emptyCart = async () => {
+        const data = await commerce?.cart?.empty();
+        setCart(data['cart']);
     };
 
     useEffect(() => {
@@ -36,6 +50,9 @@ export const ProductsState = ({ children }) => {
             setProducts,
             addToCart,
             fetchProducts,
+            removeFromCart,
+            updateCartQuantity,
+            emptyCart,
         }}>
             { children }
         </ProductsContext.Provider>

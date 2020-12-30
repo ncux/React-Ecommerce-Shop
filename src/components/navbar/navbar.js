@@ -25,7 +25,7 @@ export const Navbar = props => {
                 <div className={styles.grow} />
                 <div className={styles.button}>
                     {
-                        location.pathname === `/` || location.pathname?.includes('products') ? (
+                        !location.pathname?.includes('cart') ? (
                             <IconButton component={ Link } to="cart" area-label="Show cart items" color="inherit">
                                 <Badge badgeContent={ cart.total_items } color="secondary">
                                     <ShoppingCart />
