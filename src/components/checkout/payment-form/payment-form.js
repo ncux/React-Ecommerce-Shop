@@ -1,14 +1,11 @@
-import { Paper, Stepper, Typography, Step, StepLabel, CircularProgress, Divider, Button } from "@material-ui/core";
-import { useState } from "react";
+import { TextField, Grid } from "@material-ui/core";
 
 export const PaymentForm = () => {
 
     return (
-        <>
-            <div />
-            <h2>Payment</h2>
+        <Grid item xs={12} sm={6}>
 
-        </>
+        </Grid>
     );
 
 };
